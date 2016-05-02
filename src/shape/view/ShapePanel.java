@@ -38,6 +38,8 @@ public class ShapePanel extends JPanel
     
     public void addEllipse()
     {
+	int xPosition = (int)(Math.random() * 1500);
+	int yPosition = (int)(Math.random() * 1500);
 	int width = (int) (Math.random() * 1000);
 	int height = (int) (Math.random() * 1000);
 	int diameter = (int) (Math.random() * 100);
@@ -83,21 +85,40 @@ public class ShapePanel extends JPanel
 		repaint();
     }
     
-    @Override
-    
-	protected void paintComponent(Graphics currentGraphics)
+    @Override   
+    protected void paintComponent(Graphics currentGraphics)
 	{
 	    super.paintComponent(currentGraphics);
 	    
 	    Graphics2D mainGraphics = (Graphics2D) currentGraphics;
-	    
-	    for(Polygon triangle : triangleList)
-	    {
-		int red = (int) (Math.random() * 256);
-		int green = (int) (Math.random() * 256);
-		int blue = (int) (Math.random() * 256);
 		
-		int pencilSize = (int) (Math.random() * 7);
-	    }
+		drawShapes(mainGraphics, circleList);
+		drawShapes(mainGraphics, squareList);
+		drawShapes(mainGraphics, rectangleList);
+		drawShapes(mainGraphics, ellipseList);
+		drawShapes(mainGraphics, triangleList);
+		drawShapes(mainGraphics, polygonList);
 	}
+    
+    private void drawShape(Graphics2D mainGraphics, ArrayList shapeList)
+    {
+	for(Object currentShape : shapeList)
+	{
+	 int red = (int) (Math.random() * 256);
+	 int green = (int) (Math.random() * 256);
+	int blue = (int) (Math.random() * 256);
+	int pencilSize = (int) (Math.random() * 10) + 3;
+		    
+	 mainGraphics.setColor(new Color(red, blue, green));
+	 mainGraphics.setStroke(new BasicStroke(pencilSize));
+	if(currentShape instanceof Polygon)
+	{
+	mainGraphics.draw((Shape)currentShape);
+	}
+	else
+	{
+	    mainGraphics.fill((Shape)currentShape);
+	}
+	}
+    }
 }

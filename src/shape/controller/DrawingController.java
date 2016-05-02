@@ -6,9 +6,24 @@ public class DrawingController
 {
     private DrawingFrame baseFrame;
     
+    public void start()
+    {
+	
+    }
+    
     public DrawingController()
     {
-	baseFrame = new DrawingFrame(this);
+	setBaseFrame(new DrawingFrame(this));
 	
+    }
+
+    public DrawingFrame getBaseFrame() 
+    {
+	return baseFrame;
+    }
+
+    public void setBaseFrame(DrawingFrame baseFrame) 
+    {
+	this.baseFrame = baseFrame;
     }
 }
