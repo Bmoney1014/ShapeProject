@@ -38,8 +38,6 @@ public class ShapePanel extends JPanel
     
     public void addEllipse()
     {
-	int xPosition = (int)(Math.random() * 1500);
-	int yPosition = (int)(Math.random() * 1500);
 	int width = (int) (Math.random() * 1000);
 	int height = (int) (Math.random() * 1000);
 	int diameter = (int) (Math.random() * 100);
@@ -92,12 +90,12 @@ public class ShapePanel extends JPanel
 	    
 	    Graphics2D mainGraphics = (Graphics2D) currentGraphics;
 		
-		drawShapes(mainGraphics, circleList);
-		drawShapes(mainGraphics, squareList);
-		drawShapes(mainGraphics, rectangleList);
-		drawShapes(mainGraphics, ellipseList);
-		drawShapes(mainGraphics, triangleList);
-		drawShapes(mainGraphics, polygonList);
+		drawShape(mainGraphics, circleList);
+		drawShape(mainGraphics, squareList);
+		drawShape(mainGraphics, rectangleList);
+		drawShape(mainGraphics, ellipseList);
+		drawShape(mainGraphics, triangleList);
+		drawShape(mainGraphics, polygonList);
 	}
     
     private void drawShape(Graphics2D mainGraphics, ArrayList shapeList)
